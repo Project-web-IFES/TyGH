@@ -29,7 +29,9 @@ namespace Presentacion
             medico.Nombre = TbxNombre.Text;
             medico.Apellido = TbxApellido.Text;
             medico.Documento = int.Parse(TbxDocumento.Text);
-            medico.Matricula = TbxMatricula.Text;
+            Especialidad especialidad = new Especialidad();
+            especialidad.Doctorado = TbxEspecialidad.Text;
+            especialidad.Matricula=TbxMatricula.Text;
             medico.EMail = TbxEmail.Text;
             Direccion direccion = new Direccion();
             direccion.Calle = TbxCalle.Text;
@@ -39,7 +41,6 @@ namespace Presentacion
             medico.Domicilio = direccion;
             medico.Celular = TbxCelular.Text;
             medico.Legajo = int.Parse(TbxLegajo.Text);
-            medico.Matricula = TbxMatricula.Text;
             medico.Consulta = double.Parse(TbxConsulta.Text);
             MedicoNego.guardarMedico(medico);
              
