@@ -112,6 +112,15 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox TbxLocalidad;
         
         /// <summary>
+        /// Control lbl2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2;
+        
+        /// <summary>
         /// Control TbxEspecialidad.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxEspecialidad;
+        
+        /// <summary>
+        /// Control txtMatricula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMatricula;
         
         /// <summary>
         /// Control TbxLegajo.
@@ -137,15 +155,6 @@ namespace Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxConsulta;
-        
-        /// <summary>
-        /// Control TbxMatricula.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxMatricula;
         
         /// <summary>
         /// Control BtnGuardar.

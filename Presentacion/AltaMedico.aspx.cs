@@ -29,19 +29,18 @@ namespace Presentacion
             medico.Nombre = TbxNombre.Text;
             medico.Apellido = TbxApellido.Text;
             medico.Documento = int.Parse(TbxDocumento.Text);
-            Especialidad especialidad = new Especialidad();
-            especialidad.Doctorado = TbxEspecialidad.Text;
-            especialidad.Matricula=TbxMatricula.Text;
             medico.EMail = TbxEmail.Text;
+            medico.Celular = TbxCelular.Text;
             Direccion direccion = new Direccion();
             direccion.Calle = TbxCalle.Text;
             direccion.Numero = TbxAltura.Text;
             direccion.Piso = TbxPiso.Text;
             direccion.Localidad = TbxLocalidad.Text;
             medico.Domicilio = direccion;
-            medico.Celular = TbxCelular.Text;
             medico.Legajo = int.Parse(TbxLegajo.Text);
             medico.Consulta = double.Parse(TbxConsulta.Text);
+            medico.Especialidad = TbxEspecialidad.Text;
+            medico.Matricula = int.Parse(txtMatricula.Text);
             MedicoNego.guardarMedico(medico);
              
             

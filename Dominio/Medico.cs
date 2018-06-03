@@ -8,21 +8,9 @@ namespace Dominio
 {
     public class Medico : Empleado
     {
-        private Especialidad especialidad;
+        private int matricula;
+        private string especialidad;
         private Agenda agenda;
-
-        public Especialidad Especialidad
-        {
-            get
-            {
-                return especialidad;
-            }
-
-            set
-            {
-                especialidad = value;
-            }
-        }
 
         public Agenda Agenda
         {
@@ -37,11 +25,16 @@ namespace Dominio
             }
         }
 
-        public Medico(Especialidad especialidad, Agenda agenda)
+        public int Matricula { get => matricula; set => matricula = value; }
+        public string Especialidad { get => especialidad; set => especialidad = value; }
+
+        public Medico(int matricula, string especialidad, Agenda agenda) :base()
         {
+            this.matricula = matricula;
             this.especialidad = especialidad;
             this.agenda = agenda;
         }
+
         public Medico()
         {
         }

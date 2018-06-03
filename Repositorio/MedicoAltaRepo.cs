@@ -12,32 +12,29 @@ namespace Repositorio
 {
     public class MedicoAltaRepo
     {
-        string cnn = ConfigurationManager.ConnectionStrings["ConeccionASQL"].ConnectionString;
-        public void guardarMedicoBD(Medico medico)
+        string cnn = ConfigurationManager.ConnectionStrings["capas"].ConnectionString;
+        public void GuardarMedico(Medico medico)
         {
             SqlConnection conn = new SqlConnection(cnn);
-            
-            string sql = "INSERT INTO Medico (nombre,apellido,documento,email,celular,legajo,valorConsulta,matricula,calle,altura,piso,localidad) VALUES (@val1,@val2,@val3,@val4,@val5,@val6,@val7,@val8,@val9,@val10,@val11,@val12)";
+
+            string sql1 = "INSERT INTO Direccion (calle, numero, piso, localidad) VALUES (@1,@2,@3,@4); SELECT SCOPE_IDENTITY()";
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@val1", medico.Nombre);
-                cmd.Parameters.AddWithValue("@val2", medico.Apellido);
-                cmd.Parameters.AddWithValue("@val3", medico.Documento);
-                cmd.Parameters.AddWithValue("@val4", medico.EMail);
-                cmd.Parameters.AddWithValue("@val5", medico.Celular);
-                cmd.Parameters.AddWithValue("@val6", medico.Legajo);
-                cmd.Parameters.AddWithValue("@val7", medico.Consulta);
-                cmd.Parameters.AddWithValue("@val8", medico.Matricula);
-                cmd.Parameters.AddWithValue("@val9", medico.Domicilio.Calle);
-                cmd.Parameters.AddWithValue("@val10", medico.Domicilio.Numero);
-                cmd.Parameters.AddWithValue("@val11", medico.Domicilio.Piso);
-                cmd.Parameters.AddWithValue("@val12", medico.Domicilio.Localidad);
+                SqlCommand cmd = new SqlCommand(sql1, conn);
+                cmd.Parameters.AddWithValue("@1", medico.Domicilio.Calle);
+                cmd.Parameters.AddWithValue("@2", medico.Domicilio.Numero);
+                cmd.Parameters.AddWithValue("@3", medico.Domicilio.Piso);
+                cmd.Parameters.AddWithValue("@4", medico.Domicilio.Localidad);
+
+                int id = int.Parse(cmd.ExecuteScalar().ToString());
+
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+
+                GuardarPersonaAux(medico, id);
             }
-            catch(System.Data.SqlClient.SqlException ex)
+            catch (System.Data.SqlClient.SqlException ex)
             {
                 string msg = "error";
                 msg += ex.Message;
@@ -48,8 +45,111 @@ namespace Repositorio
                 conn.Close();
 
             }
-          
+        }
 
+        private void GuardarPersonaAux(Medico medico, int id) {
+            SqlConnection conn = new SqlConnection(cnn);
+            string sql = "INSERT INTO Persona (nombre,apellido,documento,email,celular,idDireccion) VALUES (@5,@6,@7,@8,@9,@10); SELECT SCOPE_IDENTITY()";
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@5", medico.Nombre);
+                cmd.Parameters.AddWithValue("@6", medico.Apellido);
+                cmd.Parameters.AddWithValue("@7", medico.Documento);
+                cmd.Parameters.AddWithValue("@8", medico.EMail);
+                cmd.Parameters.AddWithValue("@9", medico.Celular);
+                cmd.Parameters.AddWithValue("@10", id);
+
+                int idPersona = int.Parse(cmd.ExecuteScalar().ToString());
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                GuardarEmpleadoAux(medico, idPersona);
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "error";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+        }
+
+
+        private void GuardarEmpleadoAux(Medico medico, int id)
+        {
+            SqlConnection conn = new SqlConnection(cnn);
+            string sql = "INSERT INTO Empleado (legajo,consulta,idPersona) VALUES (@1,@2,@3); SELECT SCOPE_IDENTITY()";
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@1", medico.Legajo);
+                cmd.Parameters.AddWithValue("@2", medico.Consulta);
+                cmd.Parameters.AddWithValue("@3", id);
+
+                int idEspecialidad = int.Parse(cmd.ExecuteScalar().ToString());
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                GuardarMedicoAux(medico, id);
+
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "error";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+        }
+
+        private void GuardarMedicoAux(Medico medico, int id)
+        {
+            SqlConnection conn = new SqlConnection(cnn);
+            string sql = "INSERT INTO Medico (especialidad,matricula,idEmpleado) VALUES (@1,@2,@3); SELECT SCOPE_IDENTITY()";
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@1", medico.Especialidad);
+                cmd.Parameters.AddWithValue("@2", medico.Matricula);
+                cmd.Parameters.AddWithValue("@3", id);
+
+                int idMedico = int.Parse(cmd.ExecuteScalar().ToString());
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "error";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                conn.Close();
+
+            }
         }
 
         public void Update(Medico medico)

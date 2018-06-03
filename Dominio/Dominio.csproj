@@ -44,7 +44,6 @@
     <Compile Include="Almacen.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Especialidad.cs" />
     <Compile Include="Farmacologia.cs" />
     <Compile Include="Hospital.cs" />
     <Compile Include="Maquinas.cs" />

@@ -15,7 +15,7 @@ namespace Negocio
         
         public void guardarMedico(Medico medico)
         {
-            medicoRepo.guardarMedicoBD(medico);
+            medicoRepo.GuardarMedico(medico);
         }
         public void update(Medico medico)
         {
