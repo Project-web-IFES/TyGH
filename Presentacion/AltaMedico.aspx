@@ -13,26 +13,27 @@
     </div>
 
     <div class="form-group">
-    <asp:Label ID="Lbl" runat="server" Text="Direccion"></asp:Label>
-    <asp:TextBox ID="TbxCalle" placeholder="Calle" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TbxAltura" placeholder="Altura" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TbxPiso" placeholder="Piso" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TbxLocalidad" placeholder="localidad" runat="server"></asp:TextBox>
+        <asp:Label ID="Lbl" runat="server" Text="Direccion"></asp:Label>
+        <asp:TextBox ID="TbxCalle" placeholder="Calle" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxAltura" placeholder="Altura" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxPiso" placeholder="Piso" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxLocalidad" placeholder="localidad" runat="server"></asp:TextBox>
     </div>
 
     <div class="form-group">
-    <asp:TextBox ID="TbxLegajo" placeholder="ingrese Numero de Legajo" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TbxConsulta" placeholder="ingrese valor de consulta sin $" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TbxMatricula" placeholder="ingrese matricula" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxEspecialidad" runat="server" Text="Especialidad"></asp:TextBox>
+        <asp:TextBox ID="TbxLegajo" placeholder="ingrese Numero de Legajo" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxConsulta" placeholder="ingrese valor de consulta sin $" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TbxMatricula" placeholder="ingrese matricula" runat="server"></asp:TextBox>
     </div>
     
     <div class="form-group">
-
         <asp:Button ID="BtnGuardar" runat="server" OnClick="BtnGuardar_Click" Text="Guardar Datos" />
         <asp:Button ID="BtnUpdate" runat="server" OnClick="BtnUpdate_Click" Text="Update" />
         <asp:Button ID="BtnListar" runat="server" OnClick="BtnListar_Click" Text="Listar" />
-        <asp:GridView ID="GdvMedicos" runat="server" AutoGenerateColumns="false">
-        <Columns>
+       
+         <asp:GridView ID="GdvMedicos" runat="server" AutoGenerateColumns="false">
+            <Columns>
             <asp:BoundField HeaderText="Id" DataField="idMedico" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -46,7 +47,6 @@
             <asp:BoundField HeaderText="Legajo" DataField="legajo" />
             <asp:BoundField HeaderText="Valor Consulta" DataField="valorConsulta" />
             <asp:BoundField HeaderText="Matricula" DataField="matricula" />
-
         </Columns>
         </asp:GridView>
     </div>

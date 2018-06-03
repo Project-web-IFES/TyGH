@@ -8,19 +8,19 @@ namespace Dominio
 {
     public class Medico : Empleado
     {
-        private string matricula;
+        private Especialidad especialidad;
         private Agenda agenda;
 
-        public string Matricula
+        public Especialidad Especialidad
         {
             get
             {
-                return matricula;
+                return especialidad;
             }
 
             set
             {
-                matricula = value;
+                especialidad = value;
             }
         }
 
@@ -37,14 +37,14 @@ namespace Dominio
             }
         }
 
-        public Medico(string matricula, Agenda agenda) : base()
+        public Medico(Especialidad especialidad, Agenda agenda)
         {
-            this.matricula = matricula;
+            this.especialidad = especialidad;
             this.agenda = agenda;
         }
-
-        public Medico() : base()
+        public Medico()
         {
         }
+    
     }
 }
