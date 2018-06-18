@@ -27,10 +27,10 @@ namespace Repositorio
                 cmd.Parameters.AddWithValue("@3", medico.Domicilio.Piso);
                 cmd.Parameters.AddWithValue("@4", medico.Domicilio.Localidad);
 
-                int id = int.Parse(cmd.ExecuteScalar().ToString());
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
 
                 cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
+                //cmd.ExecuteNonQuery();
 
                 GuardarPersonaAux(medico, id);
             }
@@ -65,7 +65,7 @@ namespace Repositorio
 
 
                 cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
+                //cmd.ExecuteNonQuery();
 
                 GuardarEmpleadoAux(medico, idPersona);
 
@@ -100,7 +100,7 @@ namespace Repositorio
 
 
                 cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
+                //cmd.ExecuteNonQuery();
 
                 GuardarMedicoAux(medico, id);
 
@@ -122,7 +122,7 @@ namespace Repositorio
         private void GuardarMedicoAux(Medico medico, int id)
         {
             SqlConnection conn = new SqlConnection(cnn);
-            string sql = "INSERT INTO Medico (especialidad,matricula,idEmpleado) VALUES (@1,@2,@3); SELECT SCOPE_IDENTITY()";
+            string sql = "INSERT INTO Medico (especialidad,matricula,idEmpleado) VALUES (@1,@2,@3)";
             try
             {
                 conn.Open();
@@ -131,7 +131,7 @@ namespace Repositorio
                 cmd.Parameters.AddWithValue("@2", medico.Matricula);
                 cmd.Parameters.AddWithValue("@3", id);
 
-                int idMedico = int.Parse(cmd.ExecuteScalar().ToString());
+                //int idMedico = int.Parse(cmd.ExecuteScalar().ToString());
 
 
                 cmd.CommandType = CommandType.Text;
@@ -179,7 +179,7 @@ namespace Repositorio
         public DataTable listarMedicos ()
         {
             DataTable dataTable = new DataTable();
-            string sql = "select * from Medico";
+            string sql = "select * from Medicos";
             SqlConnection conn = new SqlConnection(cnn);
             conn.Open();
             SqlCommand cmd = new SqlCommand(sql, conn);
