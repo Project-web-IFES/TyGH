@@ -152,42 +152,239 @@ namespace Repositorio
             }
         }
 
-        public void Update(Medico medico)
+        public DataTable ListarMedicos()
         {
-            SqlConnection conn = new SqlConnection(cnn);
-            string sql = "UPDATE Medico (nombre) values (@val) where id=3";
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "select m.idMedico, p.nombre + ' ' + p.apellido as nombreApellido, p.celular, p.email, e.legajo, e.consulta from medico as M inner join empleado as E on m.idEmpleado = e.idEmpleado inner join persona as P on e.idPersona = p.idPersona";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
+
+        public DataTable ListarMedicoConId(int id)
+        {
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "select m.especialidad, m.matricula, e.legajo, e.consulta, p.nombre, p.apellido, p.documento, p.celular, p.email, e.legajo, e.consulta, d.calle, d.numero, d.piso, d.localidad from medico as M inner join empleado as E on m.idEmpleado = e.idEmpleado inner join persona as P on e.idPersona = p.idPersona inner join direccion as D on p.idDireccion = d.idDireccion WHERE idMedico=@val1";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            //CAMBIAR LOS PARAMETROS SI ES NECESARIO
+            cmd.Parameters.AddWithValue("@val1", id);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
+
+        public void UpdateMedico(Medico medico, int id)
+        {
+            //Establecemos la conexion de SQL
+            SqlConnection con = new SqlConnection(cnn);
+
+            //Escribimos la query de Update Con el id que quiera modificar
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            string sql = "Update medico SET especialidad = @val1, matricula=@val2 Where idMedico = @val3; SELECT idEmpleado FROM medico ";
+
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@val", medico.Nombre);
+                //Abrimos la conexion
+                con.Open();
+                //Para establecer parametros
+                SqlCommand cmd = new SqlCommand(sql, con);
+                //CAMBIAR LOS PARAMETROS
+                cmd.Parameters.AddWithValue("@val1", medico.Especialidad);
+                cmd.Parameters.AddWithValue("@val2", medico.Matricula);
+                cmd.Parameters.AddWithValue("@val3", id);
+
+
                 cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
+                //Ejecutamos la query
+                //cmd.ExecuteNonQuery();
+                int idEmpleado = int.Parse(cmd.ExecuteScalar().ToString());
+
+                UpdateEmpleado(medico, idEmpleado);
+
             }
-            catch(System.Data.SqlClient.SqlException ex)
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                string msg = "error";
+                string msg = "Insert Error:";
                 msg += ex.Message;
-                throw new Exception (msg);
+                throw new Exception(msg);
             }
             finally
             {
-                conn.Close();
+                //Cerramos la conexion
+                con.Close();
             }
+
         }
-    
-        public DataTable listarMedicos ()
+
+        private void UpdateEmpleado(Medico medico, int id)
         {
-            DataTable dataTable = new DataTable();
-            string sql = "select * from Medicos";
-            SqlConnection conn = new SqlConnection(cnn);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
-            dAdapter.Fill(dataTable);
-            conn.Close();
-            return dataTable;
+            //Establecemos la conexion de SQL
+            SqlConnection con = new SqlConnection(cnn);
+
+            //Escribimos la query de Update Con el id que quiera modificar
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            string sql = "Update empleado SET legajo = @val1, consulta=@val2 Where idEmpleado = @val3; SELECT idPersona FROM empleado ";
+
+            try
+            {
+                //Abrimos la conexion
+                con.Open();
+                //Para establecer parametros
+                SqlCommand cmd = new SqlCommand(sql, con);
+                //CAMBIAR LOS PARAMETROS
+                cmd.Parameters.AddWithValue("@val1", medico.Legajo);
+                cmd.Parameters.AddWithValue("@val2", medico.Consulta);
+                cmd.Parameters.AddWithValue("@val3", id);
+
+
+                cmd.CommandType = CommandType.Text;
+                //Ejecutamos la query
+                //cmd.ExecuteNonQuery();
+                int idPersona = int.Parse(cmd.ExecuteScalar().ToString());
+
+                UpdatePersona(medico, idPersona);
+
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "Insert Error:";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                //Cerramos la conexion
+                con.Close();
+            }
+
         }
-        
+
+        private void UpdatePersona(Medico medico, int id)
+        {
+            //Establecemos la conexion de SQL
+            SqlConnection con = new SqlConnection(cnn);
+
+            //Escribimos la query de Update Con el id que quiera modificar
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            string sql = "Update persona SET nombre = @val1, apellido=@val2, documento=@val3, email=@val4, celular=@val5 Where idPersona = @val6; SELECT idDireccion FROM persona ";
+
+            try
+            {
+                //Abrimos la conexion
+                con.Open();
+                //Para establecer parametros
+                SqlCommand cmd = new SqlCommand(sql, con);
+                //CAMBIAR LOS PARAMETROS
+                cmd.Parameters.AddWithValue("@val1", medico.Nombre);
+                cmd.Parameters.AddWithValue("@val2", medico.Apellido);
+                cmd.Parameters.AddWithValue("@val3", medico.Documento);
+                cmd.Parameters.AddWithValue("@val4", medico.EMail);
+                cmd.Parameters.AddWithValue("@val5", medico.Celular);
+                cmd.Parameters.AddWithValue("@val6", id);
+
+
+                cmd.CommandType = CommandType.Text;
+                //Ejecutamos la query
+                //cmd.ExecuteNonQuery();
+                int idDireccion = int.Parse(cmd.ExecuteScalar().ToString());
+
+                UpdateDireccion(medico, idDireccion);
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "Insert Error:";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                //Cerramos la conexion
+                con.Close();
+            }
+
+        }
+
+        private void UpdateDireccion(Medico medico, int id)
+        {
+            //Establecemos la conexion de SQL
+            SqlConnection con = new SqlConnection(cnn);
+
+            //Escribimos la query de Update Con el id que quiera modificar
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            string sql = "Update direccion SET calle = @val1, numero=@val2, piso=@val3, localidad=@val4  Where idDireccion = @val5";
+
+            try
+            {
+                //Abrimos la conexion
+                con.Open();
+                //Para establecer parametros
+                SqlCommand cmd = new SqlCommand(sql, con);
+                //CAMBIAR LOS PARAMETROS
+                Direccion direccion = new Direccion();
+                direccion = medico.Domicilio;
+                cmd.Parameters.AddWithValue("@val1", direccion.Calle);
+                cmd.Parameters.AddWithValue("@val2", direccion.Numero);
+                cmd.Parameters.AddWithValue("@val3", direccion.Piso);
+                cmd.Parameters.AddWithValue("@val4", direccion.Localidad);
+                cmd.Parameters.AddWithValue("@val5", id);
+
+
+                cmd.CommandType = CommandType.Text;
+                //Ejecutamos la query
+                cmd.ExecuteNonQuery();
+
+
+
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string msg = "Insert Error:";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                //Cerramos la conexion
+                con.Close();
+            }
+
+        }
+
+
+
+
     }
 }

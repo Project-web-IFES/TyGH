@@ -12,62 +12,79 @@ namespace Presentacion
 {
     public partial class AltaMedico : System.Web.UI.Page
     {
-        MedicoAltaNego MedicoNego = new MedicoAltaNego();
+        MedicoAltaNego medicoNeg = new MedicoAltaNego();
        
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void BtnGuardar_Click(object sender, EventArgs e)
-        {
-            guardarMedicoNuevo();
-        }
-        public void guardarMedicoNuevo()
+        public void GuardarMedico()
         {
             Medico medico = new Medico();
-            medico.Nombre = TbxNombre.Text;
-            medico.Apellido = TbxApellido.Text;
-            medico.Documento = int.Parse(TbxDocumento.Text);
-            medico.EMail = TbxEmail.Text;
-            medico.Celular = TbxCelular.Text;
+            medico.Nombre = txtNombre.Text;
+            medico.Apellido = txtApellido.Text;
+            medico.Documento = int.Parse(txtDocumento.Text);
+            medico.EMail = txtEmail.Text;
+            medico.Celular = txtCelular.Text;
             Direccion direccion = new Direccion();
-            direccion.Calle = TbxCalle.Text;
-            direccion.Numero = TbxAltura.Text;
-            direccion.Piso = TbxPiso.Text;
-            direccion.Localidad = TbxLocalidad.Text;
+            direccion.Calle = txtCalle.Text;
+            direccion.Numero = txtAltura.Text;
+            direccion.Piso = txtPiso.Text;
+            direccion.Localidad = ddlListarLocalidad.SelectedValue;
             medico.Domicilio = direccion;
-            medico.Legajo = int.Parse(TbxLegajo.Text);
-            medico.Consulta = double.Parse(TbxConsulta.Text);
-            medico.Especialidad = TbxEspecialidad.Text;
+            medico.Legajo = int.Parse(txtLegajo.Text);
+            medico.Consulta = double.Parse(txtConsulta.Text);
+            medico.Especialidad = ddlListarEspecialidades.SelectedValue;
             medico.Matricula = int.Parse(txtMatricula.Text);
-            MedicoNego.guardarMedico(medico);
+            medicoNeg.GuardarMedico(medico);
              
             
         }
 
-        protected void BtnUpdate_Click(object sender, EventArgs e)
+        protected void btnEditarMedico_Click(object sender, EventArgs e)
         {
-            UpDate();
-        }
-        public void UpDate ()
-        {
-            Medico medico = new Medico();
-            medico.Nombre = TbxNombre.Text;
-            MedicoNego.update(medico);
-        }
+            Button btnEditar = (sender as Button);
 
-        protected void BtnListar_Click(object sender, EventArgs e)
-        {
-            listar();
+            string commandArgument = btnEditar.CommandArgument;
+
+            GridViewRow row = (btnEditar.NamingContainer as GridViewRow);
+
+            int rowIndex = row.RowIndex;
+
+            Response.Redirect("~/EditarMedico?ID=" + commandArgument);
         }
 
-        public void listar()
+        protected void btnCargarAgenda_Click(object sender, EventArgs e)
         {
-            GdvMedicos.DataSource = MedicoNego.listar();
-            GdvMedicos.DataBind();
+            Button btnCargar = (sender as Button);
+
+            string commandArgument = btnCargar.CommandArgument;
+
+            GridViewRow row = (btnCargar.NamingContainer as GridViewRow);
+
+            int rowIndex = row.RowIndex;
+
+            Response.Redirect("~/CargarAgenda?ID=" + commandArgument);
+        }
+
+        protected void btnGuardar_Click1(object sender, EventArgs e)
+        {
+            GuardarMedico();
+        }
 
 
+        protected void ListarMedicos()
+        {
+            //SI NO QUIERO QUE APAREZCA EL ID PUEDO SACAR EL BOUNDFIELD DE ID PERO IGUAL PEDIRLO EN LA BASE DE DATOS SOBRE TODO SI TENEMOS BOTONES CON EVENTOS
+            gdvListarMedicos.DataSource = medicoNeg.ListarMedicos();
+            gdvListarMedicos.DataBind();
+
+        }
+
+        protected void btnListarMedicos_Click(object sender, EventArgs e)
+        {
+            ListarMedicos();
         }
     }
 }

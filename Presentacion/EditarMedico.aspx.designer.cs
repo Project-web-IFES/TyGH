@@ -10,7 +10,7 @@
 namespace Presentacion {
     
     
-    public partial class AltaMedico {
+    public partial class EditarMedico {
         
         /// <summary>
         /// Control lblIntro.
@@ -22,13 +22,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Label lblIntro;
         
         /// <summary>
-        /// Control lblIngreseNombre.
+        /// Control lblEditeNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseNombre;
+        protected global::System.Web.UI.WebControls.Label lblEditeNombre;
         
         /// <summary>
         /// Control txtNombre.
@@ -40,13 +40,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// Control lblIngreseApellido.
+        /// Control lblEditeApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseApellido;
+        protected global::System.Web.UI.WebControls.Label lblEditeApellido;
         
         /// <summary>
         /// Control txtApellido.
@@ -58,13 +58,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
-        /// Control lblIngreseDocumento.
+        /// Control lblEditeDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseDocumento;
+        protected global::System.Web.UI.WebControls.Label lblEditeDocumento;
         
         /// <summary>
         /// Control txtDocumento.
@@ -76,13 +76,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtDocumento;
         
         /// <summary>
-        /// Control lblIngreseEmail.
+        /// Control lblEditeEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseEmail;
+        protected global::System.Web.UI.WebControls.Label lblEditeEmail;
         
         /// <summary>
         /// Control txtEmail.
@@ -94,13 +94,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// Control lblIngreseCelular.
+        /// Control lblEditeCelular.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseCelular;
+        protected global::System.Web.UI.WebControls.Label lblEditeCelular;
         
         /// <summary>
         /// Control txtCelular.
@@ -121,13 +121,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Label lblDatosDireccion;
         
         /// <summary>
-        /// Control lblIngreseCalle.
+        /// Control lblEditeCalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseCalle;
+        protected global::System.Web.UI.WebControls.Label lblEditeCalle;
         
         /// <summary>
         /// Control txtCalle.
@@ -139,13 +139,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtCalle;
         
         /// <summary>
-        /// Control lblIngreseAltura.
+        /// Control lblEditeAltura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngreseAltura;
+        protected global::System.Web.UI.WebControls.Label lblEditeAltura;
         
         /// <summary>
         /// Control txtAltura.
@@ -157,13 +157,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtAltura;
         
         /// <summary>
-        /// Control lblIngresePiso.
+        /// Control lblEditePiso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIngresePiso;
+        protected global::System.Web.UI.WebControls.Label lblEditePiso;
         
         /// <summary>
         /// Control txtPiso.
@@ -193,13 +193,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Label lblDatosMedico;
         
         /// <summary>
-        /// Control lblLegajo.
+        /// Control lblEditeLegajo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLegajo;
+        protected global::System.Web.UI.WebControls.Label lblEditeLegajo;
         
         /// <summary>
         /// Control txtLegajo.
@@ -211,13 +211,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtLegajo;
         
         /// <summary>
-        /// Control lblConsulta.
+        /// Control lblEditeConsulta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConsulta;
+        protected global::System.Web.UI.WebControls.Label lblEditeConsulta;
         
         /// <summary>
         /// Control txtConsulta.
@@ -229,13 +229,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtConsulta;
         
         /// <summary>
-        /// Control lblMatricula.
+        /// Control lblEditeMatricula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMatricula;
+        protected global::System.Web.UI.WebControls.Label lblEditeMatricula;
         
         /// <summary>
         /// Control txtMatricula.
@@ -256,30 +256,12 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlListarEspecialidades;
         
         /// <summary>
-        /// Control btnGuardar.
+        /// Control btnUpdate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
-        
-        /// <summary>
-        /// Control btnListarMedicos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListarMedicos;
-        
-        /// <summary>
-        /// Control gdvListarMedicos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvListarMedicos;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

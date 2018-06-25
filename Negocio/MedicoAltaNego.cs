@@ -13,18 +13,23 @@ namespace Negocio
     {
         MedicoAltaRepo medicoRepo = new MedicoAltaRepo();
         
-        public void guardarMedico(Medico medico)
+        public void GuardarMedico(Medico medico)
         {
             medicoRepo.GuardarMedico(medico);
         }
-        public void update(Medico medico)
+        public void UpdateMedico(Medico medico, int id)
         {
-            medicoRepo.Update(medico);
+            medicoRepo.UpdateMedico(medico, id);
         }
 
-        public DataTable listar()
+        public DataTable ListarMedicos()
         {
-            return medicoRepo.listarMedicos();
+            return medicoRepo.ListarMedicos();
+        }
+
+        public DataTable ListarMedicoConId(int id)
+        {
+            return medicoRepo.ListarMedicoConId(id);
         }
 
     }
