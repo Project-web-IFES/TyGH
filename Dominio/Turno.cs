@@ -11,6 +11,8 @@ namespace Dominio
         private DateTime diaHoraInicio;
         private DateTime diaHoraFinal;
         private Sala sala;
+        private Paciente paciente;
+        private Agenda agenda;
 
         public DateTime DiaHoraInicio
         {
@@ -51,11 +53,16 @@ namespace Dominio
             }
         }
 
-        protected Turno(DateTime diaHoraInicio, DateTime diaHoraFinal, Sala sala)
+        public Agenda Agenda { get => agenda; set => agenda = value; }
+        public Paciente Paciente { get => paciente; set => paciente = value; }
+
+        protected Turno(DateTime diaHoraInicio, DateTime diaHoraFinal, Sala sala, Agenda agenda, Paciente paciente)
         {
             this.sala = sala;
             this.diaHoraInicio = diaHoraInicio;
             this.diaHoraFinal = diaHoraFinal;
+            this.agenda = agenda;
+            this.paciente = paciente;
         }
 
         protected Turno()
