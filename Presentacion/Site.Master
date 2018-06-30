@@ -4,23 +4,22 @@
 
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - GESTION DE TURNOS</title>
 
 
-    
+
     <link href="Content/Site.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/moment.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-<%--    <script src="Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="Scripts/bootstrap-datetimepicker.js"></script>
 
 
-    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />--%>
-
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -38,7 +37,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/AltaMedico.aspx">AltaMedico</a></li>
+                        <li><a runat="server" href="~/AltaMedico.aspx">Alta Medico</a></li>
+
+                        <li><a runat="server" href="~/ALtaPaciente.aspx">Alta Paciente</a></li>
+
 
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">

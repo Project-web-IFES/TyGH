@@ -55,19 +55,6 @@ namespace Presentacion
             Response.Redirect("~/EditarMedico?ID=" + commandArgument);
         }
 
-        protected void btnCargarAgenda_Click(object sender, EventArgs e)
-        {
-            Button btnCargar = (sender as Button);
-
-            string commandArgument = btnCargar.CommandArgument;
-
-            GridViewRow row = (btnCargar.NamingContainer as GridViewRow);
-
-            int rowIndex = row.RowIndex;
-
-            Response.Redirect("~/CargarAgenda?ID=" + commandArgument);
-        }
-
         protected void btnGuardar_Click1(object sender, EventArgs e)
         {
             GuardarMedico();
@@ -85,6 +72,19 @@ namespace Presentacion
         protected void btnListarMedicos_Click(object sender, EventArgs e)
         {
             ListarMedicos();
+        }
+
+        protected void btnCargarOVerAgenda_Click(object sender, EventArgs e)
+        {
+            Button btnCargar = (sender as Button);
+
+            string commandArgument = btnCargar.CommandArgument;
+
+            GridViewRow row = (btnCargar.NamingContainer as GridViewRow);
+
+            int rowIndex = row.RowIndex;
+
+            Response.Redirect("~/AltaAgenda?ID=" + commandArgument);
         }
     }
 }

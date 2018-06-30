@@ -83,5 +83,10 @@ namespace Presentacion
         {
             UpdateMedico();
         }
+
+        //protected void btnEliminarMedico_Click(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

@@ -9,7 +9,6 @@ namespace Dominio
     public class Paciente : Persona
     {
         private int idPaciente;
-        private List<Turno> turnos = new List<Turno>();
 
         public int IdPaciente
         {
@@ -24,23 +23,10 @@ namespace Dominio
             }
         }
 
-        public List<Turno> Turnos
-        {
-            get
-            {
-                return turnos;
-            }
 
-            set
-            {
-                turnos = value;
-            }
-        }
-
-        public Paciente(int idPaciente, List<Turno> turnos) :base()
+        public Paciente(int idPaciente) :base()
         {
             this.idPaciente = idPaciente;
-            this.turnos = turnos;
         }
 
         public Paciente() :base()

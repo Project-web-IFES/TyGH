@@ -10,7 +10,7 @@ namespace Dominio
     {
         private DateTime diaHoraInicio;
         private DateTime diaHoraFinal;
-        private Medico medico;
+        private int idMedico;
 
         public DateTime DiaHoraInicio
         {
@@ -38,25 +38,14 @@ namespace Dominio
             }
         }
 
-        public Medico Medico
-        {
-            get
-            {
-                return medico;
-            }
 
-            set
-            {
-                medico = value;
-            }
-        }
+        public int IdMedico { get => idMedico; set => idMedico = value; }
 
-
-        public Agenda(DateTime diaHoraInicio, DateTime diaHoraFinal, Medico medico)
+        public Agenda(DateTime diaHoraInicio, DateTime diaHoraFinal, int idMedico)
         {
             this.diaHoraInicio = diaHoraInicio;
             this.diaHoraFinal = diaHoraFinal;
-            this.medico = medico;
+            this.idMedico = idMedico;
         }
 
         public Agenda()

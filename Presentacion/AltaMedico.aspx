@@ -158,7 +158,7 @@
                         <asp:TemplateField ShowHeader="false">
                             <ItemTemplate>
                                 <asp:Button ID="btnEditarMedico" OnClick="btnEditarMedico_Click" CommandArgument='<%# Eval("idMedico") %>' runat="server" Text="Editar Medico" CssClass="btn-link" />
-                                <asp:Button ID="btnCargarAgenda" OnClick="btnCargarAgenda_Click" CommandArgument='<%# Eval("idMedico") %>' runat="server" Text="Cargar Agenda" CssClass="btn-link" />
+                                <asp:Button ID="btnCargarOVerAgenda" OnClick="btnCargarOVerAgenda_Click" CommandArgument='<%# Eval("idMedico") %>' runat="server" Text="Cargar o Ver Agenda" CssClass="btn-link" />
 
                             </ItemTemplate>
                         </asp:TemplateField>

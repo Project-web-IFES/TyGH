@@ -140,6 +140,12 @@
             </div>
         </div>
 
+<%--        <div class="form-group">
+            <div class="row">
+                <asp:Button ID="btnEliminarMedico" OnClick="btnEliminarMedico_Click" runat="server" class="btn btn-danger col-md-3" Text="Borrar Medico" />
+
+            </div>
+        </div>--%>
 
     </div>
 </asp:Content>

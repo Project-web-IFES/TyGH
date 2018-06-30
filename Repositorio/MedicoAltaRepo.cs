@@ -96,13 +96,13 @@ namespace Repositorio
                 cmd.Parameters.AddWithValue("@2", medico.Consulta);
                 cmd.Parameters.AddWithValue("@3", id);
 
-                int idEspecialidad = int.Parse(cmd.ExecuteScalar().ToString());
+                int idEmpleado = int.Parse(cmd.ExecuteScalar().ToString());
 
 
                 cmd.CommandType = CommandType.Text;
                 //cmd.ExecuteNonQuery();
 
-                GuardarMedicoAux(medico, id);
+                GuardarMedicoAux(medico, idEmpleado);
 
 
             }
@@ -204,6 +204,33 @@ namespace Repositorio
             return dataTable;
         }
 
+        public DataTable ListarMedicoConIdNomApe(int id)
+        {
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "select p.nombre, p.apellido from medico as M inner join empleado as E on m.idEmpleado = e.idEmpleado inner join persona as P on e.idPersona = p.idPersona inner join direccion as D on p.idDireccion = d.idDireccion WHERE idMedico=@val1";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            //CAMBIAR LOS PARAMETROS SI ES NECESARIO
+            cmd.Parameters.AddWithValue("@val1", id);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
+
         public void UpdateMedico(Medico medico, int id)
         {
             //Establecemos la conexion de SQL
@@ -211,7 +238,9 @@ namespace Repositorio
 
             //Escribimos la query de Update Con el id que quiera modificar
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            string sql = "Update medico SET especialidad = @val1, matricula=@val2 Where idMedico = @val3; SELECT idEmpleado FROM medico ";
+            string sql = "Update medico SET especialidad = @val1, matricula=@val2 Where idMedico = @val3; SELECT idEmpleado FROM medico Where idMedico=@val3 ";
+            //string sql = "Update medico SET especialidad = @val1, matricula=@val2 Where idMedico = @val3; SELECT SCOPE_IDENTITY() ";
+
 
             try
             {
@@ -254,7 +283,9 @@ namespace Repositorio
 
             //Escribimos la query de Update Con el id que quiera modificar
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            string sql = "Update empleado SET legajo = @val1, consulta=@val2 Where idEmpleado = @val3; SELECT idPersona FROM empleado ";
+            string sql = "Update empleado SET legajo = @val1, consulta=@val2 Where idEmpleado = @val3; SELECT idPersona FROM empleado Where idEmpleado=@val3 ";
+            //string sql = "Update empleado SET legajo = @val1, consulta=@val2 Where idEmpleado = @val3; SELECT SCOPE_IDENTITY()";
+
 
             try
             {
@@ -298,7 +329,8 @@ namespace Repositorio
 
             //Escribimos la query de Update Con el id que quiera modificar
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            string sql = "Update persona SET nombre = @val1, apellido=@val2, documento=@val3, email=@val4, celular=@val5 Where idPersona = @val6; SELECT idDireccion FROM persona ";
+            string sql = "Update persona SET nombre = @val1, apellido=@val2, documento=@val3, email=@val4, celular=@val5 Where idPersona = @val6; SELECT idDireccion FROM persona Where idPersona=@val6 ";
+            //string sql = "Update persona SET nombre = @val1, apellido=@val2, documento=@val3, email=@val4, celular=@val5 Where idPersona = @val6; SELECT SCOPE_IDENTITY() ";
 
             try
             {
