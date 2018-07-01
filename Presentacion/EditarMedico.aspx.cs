@@ -84,6 +84,12 @@ namespace Presentacion
             UpdateMedico();
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AltaMedico.aspx");
+
+        }
+
         //protected void btnEliminarMedico_Click(object sender, EventArgs e)
         //{
 

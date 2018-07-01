@@ -53,7 +53,7 @@
         <div class="form-group">
             <div class="row">
                 <h4>
-                    <asp:Label ID="lblDatosDireccion" runat="server" Text="Ingrese los datos de la Direccion del Paciente" CssClass="label control-label label-default col-md-3"></asp:Label></h4>
+                    <asp:Label ID="lblDatosDireccion" runat="server" Text="Ingrese los datos de la Direccion del Paciente" CssClass="label control-label label-default col-md-4"></asp:Label></h4>
             </div>
         </div>
 
@@ -105,7 +105,7 @@
 
         <div class="form-group">
             <div class="row">
-                <asp:GridView ID="gdvListarPacientes" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="gdvListarPacientes" AutoGenerateColumns="false" CssClass="table table-hover table-responsive" runat="server" RowStyle-CssClass="alert-success">
                     <Columns>
                         <asp:BoundField HeaderText="Nombre y Apellido" DataField="nombreApellido" />
                         <asp:BoundField HeaderText="Email" DataField="email" />

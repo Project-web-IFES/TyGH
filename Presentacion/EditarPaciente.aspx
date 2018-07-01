@@ -97,13 +97,20 @@
             </div>
         </div>
 
-<%--        <div class="form-group">
+        <div class="form-group">
+            <div class="row">
+                <asp:Button ID="btnVolver" OnClick="btnVolver_Click" runat="server" class="btn btn-danger col-md-5" Text="Volver A Alta Paciente" />
+
+
+            </div>
+        </div>
+
+        <%--        <div class="form-group">
             <div class="row">
                 <asp:Button ID="btnEliminarPaciente" OnClick="btnEliminarPaciente_Click" runat="server" class="btn btn-danger col-md-3" Text="Borrar Paciente" />
 
             </div>
         </div>--%>
-
     </div>
 
 

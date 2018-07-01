@@ -33,6 +33,16 @@ namespace Negocio
             return pacienteRep.ListarPacienteConId(id);
         }
 
+        public DataTable ListarPacientesDDL()
+        {
+            return pacienteRep.ListarPacientesDDL();
+        }
+
+        public DataTable ListarPacienteConIdNomApe(int id)
+        {
+            return pacienteRep.ListarPacienteConIdNomApe(id);
+        }
+
         //public void DeletePaciente(int id)
         //{
         //    pacienteRep.DeletePaciente(id);

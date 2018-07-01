@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public abstract class Turno
+    public class Turno
     {
         private DateTime diaHoraInicio;
         private DateTime diaHoraFinal;
-        private Sala sala;
-        private Paciente paciente;
-        private Agenda agenda;
+        private int idSala;
+        private int idPaciente;
+        private int idAgenda;
 
         public DateTime DiaHoraInicio
         {
@@ -40,32 +40,21 @@ namespace Dominio
             }
         }
 
-        public Sala Sala
+
+        public int IdPaciente { get => idPaciente; set => idPaciente = value; }
+        public int IdAgenda { get => idAgenda; set => idAgenda = value; }
+        public int IdSala { get => this.idSala; set => this.idSala = value; }
+
+        public Turno(DateTime diaHoraInicio, DateTime diaHoraFinal, int idSala, int idAgenda, int idPaciente)
         {
-            get
-            {
-                return sala;
-            }
-
-            set
-            {
-                sala = value;
-            }
-        }
-
-        public Agenda Agenda { get => agenda; set => agenda = value; }
-        public Paciente Paciente { get => paciente; set => paciente = value; }
-
-        protected Turno(DateTime diaHoraInicio, DateTime diaHoraFinal, Sala sala, Agenda agenda, Paciente paciente)
-        {
-            this.sala = sala;
+            this.idSala = idSala;
             this.diaHoraInicio = diaHoraInicio;
             this.diaHoraFinal = diaHoraFinal;
-            this.agenda = agenda;
-            this.paciente = paciente;
+            this.idAgenda = idAgenda;
+            this.idPaciente = idPaciente;
         }
 
-        protected Turno()
+        public Turno()
         {
         }
 

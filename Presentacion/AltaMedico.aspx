@@ -105,7 +105,7 @@
                 <asp:TextBox ID="txtLegajo" CssClass="input-lg col-md-3" runat="server"></asp:TextBox>
 
                 <h1>
-                    <asp:Label ID="lblConsulta" runat="server" CssClass="label control-label label-default col-md-2" Text="Precio Consulta: "></asp:Label></h1>
+                    <asp:Label ID="lblConsulta" runat="server" CssClass="label control-label label-default col-md-3" Text="Precio Consulta: "></asp:Label></h1>
 
                 <asp:TextBox ID="txtConsulta" CssClass="input-lg col-md-3" runat="server"></asp:TextBox>
             </div>
@@ -147,7 +147,7 @@
 
         <div class="form-group">
             <div class="row">
-                <asp:GridView ID="gdvListarMedicos" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="gdvListarMedicos" AutoGenerateColumns="false" CssClass="table table-hover table-responsive" runat="server" RowStyle-CssClass="alert-success">
                     <Columns>
                         <asp:BoundField HeaderText="Nombre y Apellido" DataField="nombreApellido" />
                         <asp:BoundField HeaderText="Email" DataField="email" />

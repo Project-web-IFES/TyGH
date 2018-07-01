@@ -231,6 +231,33 @@ namespace Repositorio
             return dataTable;
         }
 
+        public DataTable ListarMedicoConIdNomApeAgenda(int id)
+        {
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "select p.nombre, p.apellido from agenda as A inner join medico as M on a.idMedico = m.idMedico inner join empleado as E on m.idEmpleado = e.idEmpleado inner join persona as P on e.idPersona = p.idPersona inner join direccion as D on p.idDireccion = d.idDireccion WHERE a.idAgenda=@val1";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            //CAMBIAR LOS PARAMETROS SI ES NECESARIO
+            cmd.Parameters.AddWithValue("@val1", id);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
+
         public void UpdateMedico(Medico medico, int id)
         {
             //Establecemos la conexion de SQL

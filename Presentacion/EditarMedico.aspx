@@ -105,7 +105,7 @@
                 <asp:TextBox ID="txtLegajo" CssClass="input-lg col-md-3" runat="server"></asp:TextBox>
 
                 <h1>
-                    <asp:Label ID="lblEditeConsulta" runat="server" CssClass="label control-label label-default col-md-2" Text="Precio Consulta: "></asp:Label></h1>
+                    <asp:Label ID="lblEditeConsulta" runat="server" CssClass="label control-label label-default col-md-3" Text="Precio Consulta: "></asp:Label></h1>
 
                 <asp:TextBox ID="txtConsulta" CssClass="input-lg col-md-3" runat="server"></asp:TextBox>
             </div>
@@ -140,12 +140,19 @@
             </div>
         </div>
 
-<%--        <div class="form-group">
+
+        <div class="form-group">
+            <div class="row">
+                <asp:Button ID="btnVolver" OnClick="btnVolver_Click" runat="server" class="btn btn-danger col-md-5" Text="Volver A Alta Medico" />
+
+
+            </div>
+        </div>
+        <%--        <div class="form-group">
             <div class="row">
                 <asp:Button ID="btnEliminarMedico" OnClick="btnEliminarMedico_Click" runat="server" class="btn btn-danger col-md-3" Text="Borrar Medico" />
 
             </div>
         </div>--%>
-
     </div>
 </asp:Content>

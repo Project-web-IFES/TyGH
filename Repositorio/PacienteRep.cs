@@ -114,6 +114,30 @@ namespace Repositorio
             }
         }
 
+        public DataTable ListarPacientesDDL()
+        {
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "SELECT pa.idPaciente, p.nombre+' '+p.apellido as nombreApellido from paciente as PA inner join persona as P on pa.idPersona=p.idPersona";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
 
         public DataTable ListarPacientes()
         {
@@ -148,6 +172,33 @@ namespace Repositorio
             //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
             String query = "select p.nombre, p.apellido, p.documento, p.celular, p.email, d.calle, d.numero, d.piso, d.localidad from paciente as PA inner join persona as P on pa.idPersona = p.idPersona inner join direccion as D on p.idDireccion = d.idDireccion WHERE idPaciente=@val1";
+
+
+            SqlConnection con = new SqlConnection(cnn);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            //CAMBIAR LOS PARAMETROS SI ES NECESARIO
+            cmd.Parameters.AddWithValue("@val1", id);
+
+
+            //toma el datatable y mete lo que traigamos de la query
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dataTable);
+
+            con.Close();
+
+            return dataTable;
+        }
+
+        public DataTable ListarPacienteConIdNomApe(int id)
+        {
+            DataTable dataTable = new DataTable();
+
+            //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
+            //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
+            String query = "select p.nombre, p.apellido from paciente as PA inner join persona as P on pa.idPersona = p.idPersona WHERE idPaciente=@val1";
 
 
             SqlConnection con = new SqlConnection(cnn);

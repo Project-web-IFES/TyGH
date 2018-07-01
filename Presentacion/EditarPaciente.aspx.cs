@@ -77,6 +77,12 @@ namespace Presentacion
             UpdatePaciente();
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AltaPaciente.aspx");
+
+        }
+
         //private void DeletePaciente()
         //{
         //    if (Request.QueryString["ID"] != null)

@@ -37,5 +37,10 @@ namespace Negocio
             return medicoRepo.ListarMedicoConIdNomApe(id);
         }
 
+        public DataTable ListarMedicoConIdNomApeAgenda(int id)
+        {
+            return medicoRepo.ListarMedicoConIdNomApeAgenda(id);
+        }
+
     }
 }
