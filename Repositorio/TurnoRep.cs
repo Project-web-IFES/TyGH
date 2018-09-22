@@ -18,27 +18,23 @@ namespace Repositorio
         {
             //Establecemos la conexion de SQL
             SqlConnection con = new SqlConnection(cnn);
-
             //Escribimos la query de Insert en este caso persona es el nombre de la tabla
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            string sql = "Insert into turno (diaHoraInicio, diaHoraFinal, idPaciente, idAgenda, idSala) VALUES (@val1,@val2,@val3, @val4, @val5)";
+            //string sql = "Insert into turno (diaHoraInicio, diaHoraFinal, idPaciente, idAgenda, idSala) VALUES (@val1,@val2,@val3, @val4, @val5)";
 
             try
             {
                 //Abrimos la conexion
                 con.Open();
                 //Para establecer parametros
-                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlCommand cmd = new SqlCommand("Guardar_Turno", con);
+                cmd.CommandType = CommandType.StoredProcedure;
                 //CAMBIAR LOS PARAMETROS
-                cmd.Parameters.AddWithValue("@val1", turno.DiaHoraInicio);
-                cmd.Parameters.AddWithValue("@val2", turno.DiaHoraFinal);
-                cmd.Parameters.AddWithValue("@val3", turno.IdPaciente);
-                cmd.Parameters.AddWithValue("@val4", turno.IdAgenda);
-                cmd.Parameters.AddWithValue("@val5", turno.IdSala);
-
-
-
-                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new SqlParameter("@diaHoraInicio", SqlDbType.DateTime)).Value=turno.DiaHoraInicio;
+                cmd.Parameters.Add(new SqlParameter("@diaHoraFinal", SqlDbType.DateTime)).Value = turno.DiaHoraFinal;
+                cmd.Parameters.Add(new SqlParameter("@idPaciente", SqlDbType.Int)).Value = turno.IdPaciente;
+                cmd.Parameters.Add(new SqlParameter("@idAgenda", SqlDbType.Int)).Value = turno.IdAgenda;
+                cmd.Parameters.Add(new SqlParameter("@idSala", SqlDbType.Int)).Value = turno.IdSala;
                 //Ejecutamos la query
                 cmd.ExecuteNonQuery();
             }
@@ -62,22 +58,17 @@ namespace Repositorio
 
             //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            String query = "SELECT t.idTurno, t.diaHoraInicio, p.nombre+' '+p.apellido as nombreCompleto, t.diaHoraFinal, s.nombre from turno as T inner join paciente as PA on t.idPaciente = pa.idPaciente inner join persona as P on pa.idPersona = p.idPersona inner join sala as S on t.idSala=s.idSala where t.idAgenda = @val1";
+            //String query = "SELECT t.idTurno, t.diaHoraInicio, p.nombre+' '+p.apellido as nombreCompleto, t.diaHoraFinal, s.nombre from turno as T inner join paciente as PA on t.idPaciente = pa.idPaciente inner join persona as P on pa.idPersona = p.idPersona inner join sala as S on t.idSala=s.idSala where t.idAgenda = @val1";
 
             SqlConnection con = new SqlConnection(cnn);
             con.Open();
-
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@val1", id);
-
-
+            SqlCommand cmd = new SqlCommand("Listar_Turnos", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@idAgenda", SqlDbType.Int)).Value = id;
             //toma el datatable y mete lo que traigamos de la query
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-
             da.Fill(dataTable);
-
             con.Close();
-
             return dataTable;
         }
 
@@ -88,20 +79,15 @@ namespace Repositorio
 
             //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            String query = "SELECT t.idTurno, t.diaHoraInicio, t.diaHoraFinal, s.nombre from turno as T inner join paciente as PA on t.idPaciente = pa.idPaciente inner join persona as P on pa.idPersona = p.idPersona inner join sala as S on t.idSala=s.idSala where t.idPaciente = @val1";
-
+            //String query = "SELECT t.idTurno, t.diaHoraInicio, t.diaHoraFinal, s.nombre from turno as T inner join paciente as PA on t.idPaciente = pa.idPaciente inner join persona as P on pa.idPersona = p.idPersona inner join sala as S on t.idSala=s.idSala where t.idPaciente = @val1";
             SqlConnection con = new SqlConnection(cnn);
             con.Open();
-
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@val1", id);
-
-
+            SqlCommand cmd = new SqlCommand("Listar_Turnos_Paciente", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@idPaciente",SqlDbType.Int)).Value=id;
             //toma el datatable y mete lo que traigamos de la query
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-
             da.Fill(dataTable);
-
             con.Close();
 
             return dataTable;

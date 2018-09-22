@@ -1,0 +1,21 @@
+USE [TyGH]
+GO
+
+/****** Object:  Table [dbo].[sala]    Script Date: 30/6/2018 19:26:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[sala](
+	[idSala] [int] IDENTITY(1,1) NOT NULL,
+	[numero] [int] NULL,
+	[nombre] [varchar](60) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idSala] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+

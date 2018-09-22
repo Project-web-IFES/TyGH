@@ -25,21 +25,22 @@
     <form runat="server">
 
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-fixed-top bg-primary">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle btn btn-outline-dark"  data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">GESTION DE TURNOS MEDICOS</a>
+                    <a class="navbar-brand" style="color:black" runat="server" href="~/">GESTION DE TURNOS MEDICOS</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/AltaMedico.aspx">Alta Medico</a></li>
+                <div class="navbar-collapse collapse" style="border-bottom-color:black">
+                    <ul class="nav navbar-nav" style="border-bottom-color:black">
+                        <li><a style="color:black" runat="server" href="~/AltaMedico.aspx">Alta Medico</a></li>
 
-                        <li><a runat="server" href="~/ALtaPaciente.aspx">Alta Paciente</a></li>
+                        <li><a style="color:black" runat="server" href="~/ALtaPaciente.aspx">Alta Paciente</a></li>
 
 
                     </ul>

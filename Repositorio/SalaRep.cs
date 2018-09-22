@@ -17,29 +17,19 @@ namespace Repositorio
         public DataTable ListarSalasDDL()
         {
             DataTable dataTable = new DataTable();
-
             //Tengo que usar el nombre de la tabla, cambiar la query dependiendo lo que necesitemos
             //CAMBIAR TODOS LOS NOMBRES EN LAS QUERIES BIEN
-            String query = "SELECT s.idSala, s.nombre from sala as S";
 
-
+            //String query = "SELECT s.idSala, s.nombre from sala as S";
             SqlConnection con = new SqlConnection(cnn);
             con.Open();
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-
+            SqlCommand cmd = new SqlCommand("Listar_Salas", con);
+            cmd.CommandType = CommandType.StoredProcedure;
             //toma el datatable y mete lo que traigamos de la query
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-
             da.Fill(dataTable);
-
             con.Close();
-
             return dataTable;
         }
-
-
-
     }
 }
