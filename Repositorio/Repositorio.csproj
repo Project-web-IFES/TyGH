@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgendaRep.cs" />
+    <Compile Include="LoginRepo.cs" />
     <Compile Include="MedicoAltaRepo.cs" />
     <Compile Include="PacienteRep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
