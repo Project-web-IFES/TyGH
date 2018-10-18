@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
-    public partial class _Default : Page
+    public partial class Login1 : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["log"] == null)
-            //{
-            //    Response.Redirect("/RegistroUsuario");
-            //}
+
         }
     }
 }

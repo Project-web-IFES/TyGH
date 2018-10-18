@@ -10,7 +10,7 @@
 namespace Presentacion {
     
     
-    public partial class Login {
+    public partial class Login1 {
         
         /// <summary>
         /// Control login.
@@ -22,30 +22,21 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlLink login;
         
         /// <summary>
-        /// Control txtEmail.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control txtPass.
+        /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPass;
-        
-        /// <summary>
-        /// Control BtnLogin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnLogin;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

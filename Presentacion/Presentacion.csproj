@@ -202,6 +202,7 @@
     <Content Include="AltaAgenda.aspx" />
     <Content Include="AltaMedico.aspx" />
     <Content Include="AltaPaciente.aspx" />
+    <Content Include="AltaUsuario.aspx" />
     <Content Include="AltaVistaTurno.aspx" />
     <Content Include="CargarAgenda.aspx" />
     <Content Include="Contact.aspx" />
@@ -302,11 +303,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Login.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\login.css" />
-    <Content Include="Login.aspx" />
+    <Content Include="RegistroUsuario.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -493,6 +495,13 @@
     <Compile Include="AltaPaciente.aspx.designer.cs">
       <DependentUpon>AltaPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AltaUsuario.aspx.cs">
+      <DependentUpon>AltaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaUsuario.aspx.designer.cs">
+      <DependentUpon>AltaUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaVistaTurno.aspx.cs">
       <DependentUpon>AltaVistaTurno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -549,15 +558,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroUsuario.aspx.cs">
+      <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroUsuario.aspx.designer.cs">
+      <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
