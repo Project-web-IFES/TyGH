@@ -10,7 +10,6 @@
     <title><%: Page.Title %> - GESTION DE TURNOS</title>
 
 
-
     <link href="Content/Site.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Site.css" rel="stylesheet" />
@@ -40,24 +39,15 @@
                         <li><a style="color:black" runat="server" href="~/AltaMedico.aspx">Alta Medico</a></li>
 
                         <li><a style="color:black" runat="server" href="~/ALtaPaciente.aspx">Alta Paciente</a></li>
-
-
                     </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
+
+                    <asp:LoginView runat="server" ViewStateMode="Disabled" >
+                        <AnonymousTemplate >
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Registrarse</a></li>
-                                <li><a runat="server" href="~/Account/Login">Iniciar sesión</a></li>
+                                <li><asp:LoginName ID="LoginName1" runat="server" /></li>
+                                <asp:Button ID="Btn" runat="server" Text="Cerrar Sesion" OnClick="Btn_Click" class="btn btn-outline-success my-3 my-sm-0"/>
                             </ul>
                         </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
             </div>

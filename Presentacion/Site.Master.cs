@@ -71,13 +71,24 @@ namespace Presentacion
         {
             if (Session["log"] == null)
             {
-                Response.Redirect("/RegistroUsuario");
+                Response.Redirect("~/RegistroUsuario");
             }
         }
 
+
+
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
-            Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            
+        }
+
+        protected void Btn_Click(object sender, EventArgs e)
+        {
+            if (Session["log"] != null)
+            {
+                Session.Remove("log");
+                Response.Redirect("~/RegistroUsuario");
+            }
         }
     }
 

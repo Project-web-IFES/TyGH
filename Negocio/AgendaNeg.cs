@@ -25,5 +25,10 @@ namespace Negocio
             return agendaRep.ListarAgendas(id);
         }
 
+        public DataTable ListarAgendasDDL()
+        {
+            return agendaRep.ListarAgendaDDL();
+        }
+
     }
 }

@@ -36,3 +36,8 @@
 .inputs {
     margin-bottom: 1.5em !important;
 }
+
+.botonnvbar {
+    background-color: rgba(242, 242, 242, .4);
+    border: none;
+}

@@ -42,7 +42,7 @@ namespace Presentacion
             pass = System.Text.Encoding.UTF8.GetBytes(txtPass.Text.ToString());
             login.Password=Hash(pass);
             loginNego.GuardarUsuario(login);
-            Response.Redirect("/RegistroUsuario");
+            Response.Redirect("~/RegistroUsuario");
         }
 
 

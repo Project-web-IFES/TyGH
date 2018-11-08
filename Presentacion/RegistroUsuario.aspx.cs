@@ -51,10 +51,14 @@ namespace Presentacion
             DataTable data=loginNego.compararUsuarioPass(correo);
             string correobase = data.Rows[0]["correo"].ToString();
             string contraseñabase = data.Rows[0]["password"].ToString();
-            if(contraseñabase == hashpass)
+            if(contraseñabase == hashpass && correo ==correobase)
             {
                 Session["log"] = correo;
-                Response.Redirect("/Default.aspx");
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                LblError.Text = "usuario o contraseña incorrecto";
             }
             
         }

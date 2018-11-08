@@ -89,7 +89,7 @@ namespace Repositorio
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dataTable);
             con.Close();
-
+            dataTable.TableName = "datatable";
             return dataTable;
         }
 
