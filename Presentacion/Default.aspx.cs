@@ -11,7 +11,10 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (Session["log"] == null)
+            //{
+            //    Response.Redirect("/RegistroUsuario");
+            //}
         }
     }
 }

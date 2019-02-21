@@ -10,9 +10,7 @@ namespace Dominio
     {
         private DateTime diaHoraInicio;
         private DateTime diaHoraFinal;
-        private Medico medico;
-        private Psicologo psicologo;
-        List<Turno> turnos = new List<Turno>();
+        private int idMedico;
 
         public DateTime DiaHoraInicio
         {
@@ -40,52 +38,14 @@ namespace Dominio
             }
         }
 
-        public Medico Medico
-        {
-            get
-            {
-                return medico;
-            }
 
-            set
-            {
-                medico = value;
-            }
-        }
+        public int IdMedico { get => idMedico; set => idMedico = value; }
 
-        public Psicologo Psicologo
-        {
-            get
-            {
-                return psicologo;
-            }
-
-            set
-            {
-                psicologo = value;
-            }
-        }
-
-        public List<Turno> Turnos
-        {
-            get
-            {
-                return turnos;
-            }
-
-            set
-            {
-                turnos = value;
-            }
-        }
-
-        public Agenda(DateTime diaHoraInicio, DateTime diaHoraFinal, Medico medico, Psicologo psicologo, List<Turno> turnos)
+        public Agenda(DateTime diaHoraInicio, DateTime diaHoraFinal, int idMedico)
         {
             this.diaHoraInicio = diaHoraInicio;
             this.diaHoraFinal = diaHoraFinal;
-            this.medico = medico;
-            this.psicologo = psicologo;
-            this.turnos = turnos;
+            this.idMedico = idMedico;
         }
 
         public Agenda()

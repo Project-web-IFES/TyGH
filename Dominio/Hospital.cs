@@ -11,7 +11,6 @@ namespace Dominio
         private List<Empleado> empleados = new List<Empleado>();
         private List<Paciente> pacientes = new List<Paciente>();
         private List<Sala> salas = new List<Sala>();
-        private List<Almacen> almacen = new List<Almacen>();
         private Direccion direccion;
         private string nombre;
 
@@ -54,18 +53,6 @@ namespace Dominio
             }
         }
 
-        public List<Almacen> Almacen
-        {
-            get
-            {
-                return almacen;
-            }
-
-            set
-            {
-                almacen = value;
-            }
-        }
 
         public Direccion Direccion
         {
@@ -93,12 +80,11 @@ namespace Dominio
             }
         }
 
-        public Hospital(List<Empleado> empleados, List<Paciente> pacientes, List<Sala> salas, List<Almacen> almacen, Direccion direccion, string nombre)
+        public Hospital(List<Empleado> empleados, List<Paciente> pacientes, List<Sala> salas, Direccion direccion, string nombre)
         {
             this.Empleados = empleados;
             this.Pacientes = pacientes;
             this.Salas = salas;
-            this.Almacen = almacen;
             this.Direccion = direccion;
             this.Nombre = nombre;
         }
